@@ -1,4 +1,4 @@
-package io.github.madmike200590.aoc;
+package io.github.madmike200590.aoc.aspsupport;
 
 import java.util.ArrayList;
 import java.util.Collection;

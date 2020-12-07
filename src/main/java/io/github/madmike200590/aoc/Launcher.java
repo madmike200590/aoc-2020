@@ -1,4 +1,4 @@
-package io.github.madmike200590.aoc.day4;
+package io.github.madmike200590.aoc;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -13,9 +13,10 @@ import at.ac.tuwien.kr.alpha.common.AnswerSetFormatter;
 import at.ac.tuwien.kr.alpha.common.SimpleAnswerSetFormatter;
 import at.ac.tuwien.kr.alpha.common.fixedinterpretations.PredicateInterpretation;
 import at.ac.tuwien.kr.alpha.common.program.InputProgram;
+import io.github.madmike200590.aoc.day4.PassportChecker;
 
-public class PassportChecker {
-
+public class Launcher {
+	
 	// Args are asp files
 	public static void main(String[] args) throws IOException {
 		// Instantiate the ASP solver
