@@ -12,9 +12,9 @@ import at.ac.tuwien.kr.alpha.common.terms.ConstantTerm;
 public final class AspStrings {
 
 	private AspStrings() {
-		
+
 	}
-	
+
 	@Predicate(name = "string_char_at")
 	public static Set<List<ConstantTerm<String>>> getCharacterAt(String str, int idx) {
 		String retVal = Character.toString(str.charAt(idx));
@@ -49,6 +49,24 @@ public final class AspStrings {
 	@Predicate(name = "string_is_empty")
 	public static boolean isStringEmpty(String str) {
 		return str.isEmpty();
-	}	
-	
+	}
+
+	@Predicate(name = "string_substring")
+	public static Set<List<ConstantTerm<String>>> substringOfString(String str, int startIdx, int endIdx) {
+		return Collections.singleton(Collections.singletonList(ConstantTerm.getInstance(str.substring(startIdx, endIdx))));
+	}
+
+	@Predicate(name = "str_x_xs")
+	public static <T extends Comparable<T>> Set<List<ConstantTerm<String>>> stringHeadRemainder(String str) {
+		List<ConstantTerm<String>> xXs = null;
+		if (str.isEmpty()) {
+			return Collections.emptySet();
+		} else if (str.length() == 1) {
+			xXs = List.of(ConstantTerm.getInstance(str), ConstantTerm.getInstance(""));
+		} else {
+			xXs = List.of(ConstantTerm.getInstance(str.substring(0, 1)), ConstantTerm.getInstance(str.substring(1, str.length())));
+		}
+		return Collections.singleton(xXs);
+	}
+
 }
