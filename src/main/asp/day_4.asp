@@ -64,8 +64,8 @@ parse_area_parse_input(AREA, INPUT) :-
 
 parse_area_parse_input(AREA, INPUT) :-
     parse_area_parts(AREA, PARTS),
-    &array_idx_value[PARTS, IDX](INPUT),
-    &array_length[PARTS](PARTS_LEN),
+    &lst_idx_value[PARTS, IDX](INPUT),
+    &lst_length[PARTS](PARTS_LEN),
     IDX = 0..MAX_IDX,
     MAX_IDX = PARTS_LEN - 1.
 
@@ -94,6 +94,8 @@ passport_valid(area(S, E)) :-
     passport_data_field_valid(area(S, E), ecl, _),
     passport_data_field_valid(area(S, E), pid, _).
 
-% Once more, use an enum as crutch for a count aggregate
-valid_idx(I) :- passport_valid(A), enum(valids, A, I).
-cnt_valid(CNT) :- CNT = #max{I : valid_idx(I)}.
+% % Once more, use an enum as crutch for a count aggregate
+% valid_idx(I) :- passport_valid(A), enum(valids, A, I).
+% result(CNT) :- CNT = #max{I : valid_idx(I)}.
+
+result(CNT) :- CNT = #count{ID : passport_valid(ID)}.
